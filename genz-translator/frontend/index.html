@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GenZ Translator</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-header">
+        <div>
+          <p class="eyebrow">Local Ollama translator</p>
+          <h1>GenZ Translator</h1>
+          <p class="subtitle">
+            Translate professor-speak into Gen Z, or decode Gen Z into academic English.
+          </p>
+        </div>
+        <div id="healthBadge" class="health-badge" aria-live="polite">Checking model...</div>
+      </header>
+
+      <section class="control-panel" aria-label="Translation controls">
+        <label>
+          <span>Direction</span>
+          <select id="direction">
+            <option value="professor_to_genz">Professor / academic to Gen Z</option>
+            <option value="genz_to_professor">Gen Z to professor / academic</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Tone</span>
+          <select id="toneLevel">
+            <option value="light_genz">Light Gen Z</option>
+            <option value="medium_genz" selected>Medium Gen Z</option>
+            <option value="extreme_genz">Extreme Gen Z</option>
+            <option value="professional_academic">Professional Academic</option>
+          </select>
+        </label>
+
+        <label class="checkbox-row">
+          <input id="explainSlang" type="checkbox" />
+          <span>Explain the slang</span>
+        </label>
+
+        <button id="translateButton" class="primary-button" type="button">
+          <span class="button-text">Translate</span>
+          <span class="spinner" aria-hidden="true"></span>
+        </button>
+      </section>
+
+      <section class="examples" aria-label="Example inputs">
+        <button type="button" data-example="The assignment deadline has been extended.">
+          The assignment deadline has been extended.
+        </button>
+        <button type="button" data-example="This lecture is lowkey cooking.">
+          This lecture is lowkey cooking.
+        </button>
+        <button type="button" data-example="Please review the rubric before submitting.">
+          Please review the rubric before submitting.
+        </button>
+        <button type="button" data-example="That exam was not it.">
+          That exam was not it.
+        </button>
+      </section>
+
+      <section class="workspace-grid">
+        <div class="text-panel">
+          <div class="panel-header">
+            <h2>Input</h2>
+            <span id="charCount">0 / 6000</span>
+          </div>
+          <textarea
+            id="inputText"
+            maxlength="6000"
+            placeholder="Paste a course announcement, assignment note, student comment, or classroom phrase..."
+          ></textarea>
+        </div>
+
+        <div class="text-panel output-panel">
+          <div class="panel-header">
+            <h2>Output</h2>
+            <button id="copyButton" class="secondary-button" type="button" disabled>Copy</button>
+          </div>
+          <div id="outputText" class="output-text" aria-live="polite">
+            Your translation will appear here.
+          </div>
+        </div>
+      </section>
+
+      <div id="message" class="message" role="status" aria-live="polite"></div>
+    </main>
+
+    <script src="/static/script.js"></script>
+  </body>
+</html>

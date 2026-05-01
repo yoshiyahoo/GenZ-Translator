@@ -1,0 +1,379 @@
+:root {
+  --bg: #f6f8fb;
+  --panel: #ffffff;
+  --ink: #17202a;
+  --muted: #647084;
+  --line: #dbe2ea;
+  --accent: #0f766e;
+  --accent-dark: #115e59;
+  --accent-soft: #dff5f1;
+  --coral: #c2410c;
+  --coral-soft: #fff1e8;
+  --focus: #2563eb;
+  --danger: #b42318;
+  --success: #16734b;
+  --shadow: 0 18px 55px rgba(30, 41, 59, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    linear-gradient(180deg, rgba(15, 118, 110, 0.08), rgba(255, 255, 255, 0) 34rem),
+    var(--bg);
+  color: var(--ink);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button,
+select,
+textarea,
+input {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+.app-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 38px 0 48px;
+}
+
+.app-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 26px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--accent-dark);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 10px;
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  line-height: 0.98;
+}
+
+.subtitle {
+  max-width: 680px;
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.55;
+}
+
+.health-badge {
+  flex: 0 0 auto;
+  min-width: 180px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: 0 8px 22px rgba(30, 41, 59, 0.08);
+  color: var(--muted);
+  padding: 10px 12px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.health-badge.ok {
+  border-color: rgba(22, 115, 75, 0.22);
+  background: #ecfdf3;
+  color: var(--success);
+}
+
+.health-badge.warn {
+  border-color: rgba(180, 35, 24, 0.18);
+  background: #fef3f2;
+  color: var(--danger);
+}
+
+.control-panel,
+.examples,
+.workspace-grid {
+  margin-top: 16px;
+}
+
+.control-panel {
+  display: grid;
+  grid-template-columns: minmax(240px, 1.25fr) minmax(190px, 0.85fr) auto auto;
+  align-items: end;
+  gap: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: var(--shadow);
+  padding: 16px;
+}
+
+label {
+  display: grid;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 750;
+}
+
+select,
+textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--ink);
+}
+
+select {
+  min-height: 45px;
+  padding: 0 38px 0 12px;
+}
+
+textarea:focus,
+select:focus,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.22);
+  outline-offset: 2px;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  min-height: 45px;
+  gap: 8px;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.checkbox-row input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+}
+
+.primary-button,
+.secondary-button,
+.examples button {
+  border-radius: 8px;
+  font-weight: 800;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+
+.primary-button {
+  position: relative;
+  min-width: 138px;
+  min-height: 45px;
+  background: var(--accent);
+  color: white;
+  padding: 0 18px;
+  box-shadow: 0 12px 22px rgba(15, 118, 110, 0.25);
+}
+
+.primary-button:hover:not(:disabled) {
+  background: var(--accent-dark);
+  transform: translateY(-1px);
+}
+
+.primary-button:disabled {
+  cursor: wait;
+  opacity: 0.8;
+}
+
+.spinner {
+  display: none;
+  width: 17px;
+  height: 17px;
+  margin-left: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-top-color: white;
+  border-radius: 50%;
+  vertical-align: -3px;
+  animation: spin 0.8s linear infinite;
+}
+
+.is-loading .spinner {
+  display: inline-block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.examples button {
+  border: 1px solid rgba(194, 65, 12, 0.18);
+  background: var(--coral-soft);
+  color: var(--coral);
+  padding: 9px 12px;
+  font-size: 0.9rem;
+}
+
+.examples button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(194, 65, 12, 0.12);
+}
+
+.workspace-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.text-panel {
+  min-height: 430px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  padding: 16px;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 40px;
+  margin-bottom: 10px;
+}
+
+.panel-header h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.panel-header span {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+textarea {
+  min-height: 342px;
+  resize: vertical;
+  padding: 14px;
+  line-height: 1.55;
+}
+
+.output-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.output-text {
+  flex: 1;
+  min-height: 342px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfe;
+  color: var(--ink);
+  padding: 14px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  overflow-y: auto;
+}
+
+.output-text.placeholder {
+  color: var(--muted);
+}
+
+.secondary-button {
+  min-width: 78px;
+  min-height: 36px;
+  border: 1px solid var(--line);
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+}
+
+.secondary-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.message {
+  min-height: 26px;
+  margin-top: 14px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.message.error {
+  color: var(--danger);
+}
+
+.message.success {
+  color: var(--success);
+}
+
+@media (max-width: 880px) {
+  .app-header,
+  .workspace-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .app-header {
+    display: grid;
+  }
+
+  .health-badge {
+    width: 100%;
+  }
+
+  .control-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .checkbox-row {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 560px) {
+  .app-shell {
+    width: min(100% - 20px, 1180px);
+    padding-top: 24px;
+  }
+
+  .text-panel {
+    min-height: 360px;
+    padding: 12px;
+  }
+
+  textarea,
+  .output-text {
+    min-height: 280px;
+  }
+}
